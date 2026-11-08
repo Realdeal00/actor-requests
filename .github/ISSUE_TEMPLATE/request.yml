@@ -1,0 +1,42 @@
+name: Data tool request
+description: Ask for a new pay-per-result data Actor or a variant of an existing one
+title: "[Request] "
+labels: ["request"]
+body:
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: The website or public API the data comes from (URL preferred)
+      placeholder: https://example.com/...
+    validations:
+      required: true
+  - type: textarea
+    id: fields
+    attributes:
+      label: What data do you need?
+      description: Fields, filters, and roughly how many results per run
+      placeholder: "Product name, price, rating, review count for a list of search terms; ~5,000 rows per run"
+    validations:
+      required: true
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often will you run it?
+      options: ["Once", "Daily", "Weekly", "On demand via API/agent"]
+    validations:
+      required: true
+  - type: textarea
+    id: usecase
+    attributes:
+      label: What is it for? (optional)
+      description: Helps us pick the right output shape and price
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmations
+      options:
+        - label: The source is public — no login, cookies or paid API key needed to see the data
+          required: true
+        - label: The request does not involve personal data about private individuals
+          required: true
